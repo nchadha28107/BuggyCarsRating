@@ -4,8 +4,7 @@ import { expect } from "@playwright/test";
 import { TIMEOUTS } from '../helper/utils/utils';
 
 class OverallPage extends BasePage {
-
-    // Locators
+    
     private overallTable = '.cars.table';
     private overallTableRows = '.cars.table tbody tr';
 

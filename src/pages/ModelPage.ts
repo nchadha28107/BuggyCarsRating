@@ -4,17 +4,13 @@ import { expect } from "@playwright/test";
 import { TIMEOUTS } from '../helper/utils/utils';
 
 class ModelPage extends BasePage {
-    // Locators
     private carModelName = 'my-model .container .row:nth-of-type(2) h3';
     private carImage = 'img.card-img-top, img.img-fluid';
     private voteMessage = '.card-text';
     private voteButton = '.btn-success';
     private voteCount = 'h4:has-text("Votes")';
     private commentField = '#comment';
-    private commentsSection = '.comments';
-    private backToOverallRanking = 'a:has-text("overall")';
     private latestComment = 'my-model .container .row:nth-of-type(3) table tbody tr:nth-of-type(1) td:nth-of-type(3)';
-    private rankingTable = 'table';
 
     constructor(iWorld: CustomWorld) {
         super(iWorld.page, iWorld.logger);
@@ -63,15 +59,6 @@ class ModelPage extends BasePage {
 
     async validateLatestComment(comment:string) {
         expect(await this.page.locator(this.latestComment).textContent()).toBe(comment);
-    }
-
-    async navigateBackToRanking() {
-        await this.page.locator(this.backToOverallRanking).click();
-        this.logger.info("Navigated back to overall ranking");
-    }
-
-    async isRankingTableDisplayed(): Promise<boolean> {
-        return await this.page.locator(this.rankingTable).isVisible();
     }
 
     async validateModelPage() {

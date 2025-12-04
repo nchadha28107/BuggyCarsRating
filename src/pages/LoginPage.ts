@@ -5,7 +5,6 @@ import { TIMEOUTS } from '../helper/utils/utils';
 
 class LoginPage extends BasePage {
 
-    // Locators
     private loginField = 'input[name="login"]';
     private passwordField = 'input[name="password"]';
     private loginButton = 'button[type="submit"].btn-success';

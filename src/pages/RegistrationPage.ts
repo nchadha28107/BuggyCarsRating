@@ -8,14 +8,12 @@ const sharedState = SharedState.getInstance();
 
 class RegistrationPage extends BasePage {
 
-    // Locators
     private usernameField = 'input[id="username"]';
     private firstNameField = 'input[id="firstName"]';
     private lastNameField = 'input[id="lastName"]';
     private passwordField = 'input[id="password"]';
     private confirmPasswordField = 'input[id="confirmPassword"]';
     private registerButton = 'button[type="submit"][class*="btn-default"]';
-    private cancelButton = 'a.btn-default';
     private passwordErrorMessage = `${this.confirmPasswordField} ~ .alert-danger`;
     private successMessage = '.result.alert-success';
     private errorMessage = '.result.alert-danger';
@@ -23,11 +21,6 @@ class RegistrationPage extends BasePage {
     constructor(iWorld: CustomWorld) {
         super(iWorld.page, iWorld.logger);
     }
-
-    // async validatePageUrl() {
-    //     await expect(this.page).toHaveURL(/.*register/);
-    //     this.logger.info("Registration page URL validated");
-    // }
 
     async fillRegistrationForm(
         username: string,
@@ -55,11 +48,6 @@ class RegistrationPage extends BasePage {
         this.logger.info('User exists error verified');
     }
 
-    // async getSuccessMessage(): Promise<string> {
-    //     // await this.waitForElement(this.successMessage);
-    //     return await this.page.locator(this.successMessage).textContent() || '';
-    // }
-
     async getErrorMessage(): Promise<string> {
         return await this.page.locator(this.errorMessage).textContent() || '';
     }
@@ -78,23 +66,6 @@ class RegistrationPage extends BasePage {
         await expect(this.page.locator(this.successMessage)).toBeVisible({timeout: TIMEOUTS.EXPECT});
         this.logger.info('Registration Success message displayed');
     }
-
-    // async clickCancelButton() {
-    //     await this.page.locator(this.cancelButton).click();
-    //     this.logger.info("Clicked on Cancel button");
-    // }
-
-    // async registerUser(
-    //     username: string,
-    //     firstName: string,
-    //     lastName: string,
-    //     password: string,
-    //     confirmPassword: string
-    // ) {
-    //     await this.fillRegistrationForm(username, firstName, lastName, password, confirmPassword);
-    //     await this.clickRegisterButton();
-    //     this.logger.info(`User registration completed for: ${username}`);
-    // }
 }
 
 export default RegistrationPage;

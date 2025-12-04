@@ -54,14 +54,6 @@ When('user fills registration form with empty username', async function (this: C
     this.logger.info('Filled registration form with empty username');
 });
 
-// When('user fills registration form with invalid name', async function (this: CustomWorld, dataTable: DataTable) {
-//     const data = dataTable.rowsHash();
-//     const username = data.username === 'random' ? generateRandomUsername() : data.username;
-//     const password = data.password || generateRandomPassword();
-//     await registrationPage.fillRegistrationForm(username, generateInvalidName(), generateInvalidName(), password, password);
-//     this.logger.info('Filled registration form with invalid name containing numbers');
-// });
-
 Then('user should see username already exists error', async function (this: CustomWorld) {
     await registrationPage.verifyUserExistsError();
 });
@@ -95,17 +87,3 @@ Then('user should see password mismatch error', async function (this: CustomWorl
 Then('user should see validation error message', async function (this: CustomWorld) {
     await registrationPage.isErrorMessageDisplayed();
 });
-
-// Then('registration should be accepted or validation error shown', async function (this: CustomWorld) {
-//     // This step validates BUG-008 - system may accept invalid names
-//     if (await registrationPage.isSuccessMessageDisplayed()) {
-//         this.logger.warn('BUG-008: System accepted invalid name with numbers/special chars');
-//     } else {
-//         this.logger.info('Validation error properly shown for invalid name');
-//     }
-// });
-
-// Then('registration should succeed', async function (this: CustomWorld) {
-//     const url = await registrationPage.page.url();
-//     this.logger.info(`Registration completed. Current URL: ${url}`);
-// });

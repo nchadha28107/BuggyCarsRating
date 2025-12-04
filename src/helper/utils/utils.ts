@@ -16,10 +16,6 @@ export const generateRandomLastName = () => {
     return faker.person.lastName();
 };
 
-export const generateRandomEmail = () => {
-    return faker.internet.email();
-};
-
 export const generateRandomPassword = () => {
     return `${faker.string.alpha({ length: 1, casing: 'upper' })}${faker.string.symbol()}${faker.internet.password({ length: 7 })}${faker.string.numeric()}`;
 };
@@ -28,12 +24,4 @@ export const generateInvalidName = (): string => {
     const names = ['John123', 'Test@User', '!@#$%', '12345', 'User'];
     const index = Math.floor(Math.random() * names.length);
     return names[index];
-};
-
-export const generateRandomBirthPlace = () => {
-    return faker.location.state();
-};
-
-export const generateRandomBirthDate = () => {
-    return faker.date.birthdate({ min: 18, max: 80, mode: 'age' }).toLocaleDateString('en-GB').replace(/\//g, '.');
 };

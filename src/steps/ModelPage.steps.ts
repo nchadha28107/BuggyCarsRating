@@ -52,12 +52,6 @@ Then('car image should be displayed', async function (this: CustomWorld) {
     this.logger.warn('Car image is displayed');
 });
 
-Then('ranking table should be visible', async function (this: CustomWorld) {
-    const isTableVisible = await modelPage.isRankingTableDisplayed();
-    expect(isTableVisible).toBeTruthy();
-    this.logger.info('Ranking table is visible');
-});
-
 Then('vote counts should be displayed', async function (this: CustomWorld) {
     expect(modelPage.getVoteCount()).toBeGreaterThanOrEqual(0);
 });

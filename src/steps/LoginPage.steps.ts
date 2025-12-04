@@ -83,10 +83,3 @@ Then('user should be logged out successfully', async function (this: CustomWorld
 Given('user navigates to profile page', async function (this: CustomWorld) {
     await loginPage.navigateToProfile();
 });
-
-// Then('login fields should be visible', async function (this: CustomWorld) {
-    
-//     const hasLoginField = await loginPage.elementExists('input[name="login"]');
-//     expect(hasLoginField).toBeTruthy();
-//     this.logger.info('Login fields are visible');
-// });
