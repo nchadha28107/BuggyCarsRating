@@ -4,6 +4,7 @@ import { expect } from "@playwright/test";
 import { TIMEOUTS } from '../helper/utils/utils';
 
 class ModelPage extends BasePage {
+
     private carModelName = 'my-model .container .row:nth-of-type(2) h3';
     private carImage = 'img.card-img-top, img.img-fluid';
     private voteMessage = '.card-text';
@@ -14,15 +15,6 @@ class ModelPage extends BasePage {
 
     constructor(iWorld: CustomWorld) {
         super(iWorld.page, iWorld.logger);
-    }
-
-    async getCarModelName(): Promise<string> {
-        await this.page.locator(this.carModelName).waitFor({ state: 'visible', timeout: 30000 });
-        return await this.page.locator(this.carModelName).textContent() || '';
-    }
-
-    async isCarImageDisplayed(): Promise<boolean> {
-        return await this.page.locator(this.carImage).isVisible();
     }
 
     async clickVoteButton() {

@@ -41,11 +41,6 @@ When('user confirms new password {string}', async function (this: CustomWorld, c
     await profilePage.updateConfirmNewPassword(confirmPassword);
 });
 
-When('user fills registration form', async function (this: CustomWorld) {
-    // This is for responsive testing
-    this.logger.info('Filled registration form on mobile');
-});
-
 Then('profile information should be displayed', async function (this: CustomWorld) {
     await profilePage.validateProfilePage();
 });
@@ -87,22 +82,4 @@ Then('error message for lastName should be displayed', async function (this: Cus
 
 Then('save button should be disabled', async function (this: CustomWorld) {
     await profilePage.verifySaveButtonDisabled();
-});
-
-Then('form should be usable', async function (this: CustomWorld) {
-    this.logger.info('Form is usable on mobile device');
-});
-
-Then('all fields should be accessible', async function (this: CustomWorld) {
-    this.logger.info('All form fields are accessible');
-});
-
-Then('navigation menu should be accessible', async function (this: CustomWorld) {
-    // const hasNav = await profilePage.elementExists('nav, .navbar');
-    // expect(hasNav).toBeTruthy();
-    this.logger.info('Navigation menu is accessible');
-});
-
-Then('menu items should be tappable', async function (this: CustomWorld) {
-    this.logger.info('Menu items are tappable on mobile');
 });

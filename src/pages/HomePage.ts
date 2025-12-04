@@ -31,13 +31,6 @@ class HomePage extends BasePage {
         this.logger.info("Clicked on Overall Rating");
     }
 
-    async performQuickLogin(username: string, password: string) {
-        await this.page.locator(this.loginField).fill(username);
-        await this.page.locator(this.passwordField).fill(password);
-        await this.page.locator(this.loginButton).click();
-        this.logger.info(`Quick login performed for user: ${username}`);
-    }
-
     async getCarModelCount() {
         expect(await this.page.locator(this.carModelCards).count()).toBeGreaterThan(0);
     }

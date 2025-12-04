@@ -35,29 +35,7 @@ When('user posts a comment {string}', async function (this: CustomWorld, comment
     await modelPage.postComment(comment);
 });
 
-Then('car model detail page should be displayed', async function (this: CustomWorld) {
-    await modelPage.validateModelPage();
-    this.logger.info('Car model detail page displayed');
-});
-
-Then('car model name should be visible', async function (this: CustomWorld) {
-    const carName = await modelPage.getCarModelName();
-    expect(carName).toBeTruthy();
-    expect(carName.length).toBeGreaterThan(0);
-    this.logger.info(`Car model name: ${carName}`);
-});
-
-Then('car image should be displayed', async function (this: CustomWorld) {
-    expect(await modelPage.isCarImageDisplayed()).toBeTruthy();
-    this.logger.warn('Car image is displayed');
-});
-
-Then('vote counts should be displayed', async function (this: CustomWorld) {
-    expect(modelPage.getVoteCount()).toBeGreaterThanOrEqual(0);
-});
-
 Then('vote is registered and count should increase', async function (this: CustomWorld) {
-    // await modelPage.wait(1000);
     await modelPage.validateVoteMessage();
     const voteCountAfter = await modelPage.getVoteCount();
     const voteCountBefore = sharedState.voteCount;
