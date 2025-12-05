@@ -22,11 +22,10 @@ This bug report documents defects identified during comprehensive testing of the
 
 | Severity | Count | Percentage |
 |----------|-------|------------|
-| Critical | 0 | 0% |
-| High | 1 | 7.7% |
-| Medium | 3 | 23.1% |
-| Low | 9 | 69.2% |
-| **Total** | **13** | **100%** |
+| High | 2 | 18.2% |
+| Medium | 1 | 9.1% |
+| Low | 8 | 72.7% |
+| **Total** | **11** | **100%** |
 
 ---
 
@@ -35,18 +34,16 @@ This bug report documents defects identified during comprehensive testing of the
 | Bug ID | Title | Severity | Category | Status | Discovery Method |
 |--------|-------|----------|----------|--------|------------------|
 | BUG-001 | Incorrect validation message for last name field | Low | Validation | New | Manual Testing |
-| BUG-002 | Unclear password validation error message | Low | Validation | New | Manual Testing |
-| BUG-003 | Navigation link broken on Popular Make page | Low | Navigation | New | Exploratory Testing |
-| BUG-004 | Broken image for Lancia Ypsilon | Low | UI/Display | New | Visual Inspection |
-| BUG-005 | Sorting by Rank not working correctly | Low | Functionality | New | Functional Testing |
-| BUG-006 | Sorting by Votes not working correctly | Low | Functionality | New | Functional Testing |
-| BUG-007 | Pagination allows navigation beyond valid pages | Low | Navigation | New | Boundary Testing |
-| BUG-008 | Comments not responsive on mobile devices | Medium | Responsive Design | New | Mobile Testing |
-| BUG-009 | Missing authors on Model page comments | Medium | Data Display | New | Data Validation |
-| BUG-010 | Profile allows spaces in required fields | Medium | Validation | New | Negative Testing |
-| BUG-011 | Uncontrolled exception for invalid gender values | Medium | Validation/Error Handling | New | Negative Testing |
-| BUG-012 | Unclear error message for duplicate username | Medium | Validation/UX | New | Registration Testing |
-| BUG-013 | Mobile layout issues on Model page | High | Responsive Design | New | Responsive Testing |
+| BUG-002 | Navigation link broken on Popular Make page | Low | Navigation | New | Exploratory Testing |
+| BUG-003 | Broken image for Lancia Ypsilon | Low | UI/Display | New | Visual Inspection |
+| BUG-004 | Sorting by Rank not working correctly | Low | Functionality | New | Functional Testing |
+| BUG-005 | Sorting by Votes not working correctly | Low | Functionality | New | Functional Testing |
+| BUG-006 | Pagination allows navigation beyond valid pages | Low | Navigation | New | Boundary Testing |
+| BUG-007 | Comments not responsive on mobile devices | High | Responsive Design | New | Mobile Testing |
+| BUG-008 | Missing authors on Model page comments | Medium | Data Display | New | Data Validation |
+| BUG-009 | Profile allows spaces in required fields | Low | Validation | New | Negative Testing |
+| BUG-010 | Uncontrolled exception for invalid gender values | Low | Validation/Error Handling | New | Negative Testing |
+| BUG-011 | Mobile layout issues on Model page | High | Responsive Design | New | Responsive Testing |
 
 ---
 
@@ -106,72 +103,13 @@ Update the validation message mapping to correctly display "Last name is require
 
 ---
 
-### BUG-002: Unclear Password Validation Error Message
+### BUG-002: Navigation Link Broken on Popular Make Page
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-002 |
-| **Title** | Password validation message is technical and unclear |
-| **Severity** | Low |
-| **Priority** | Low |
-| **Category** | Validation/UX |
-| **Status** | New |
-| **Functional Area** | Registration Page |
-| **Discovery Method** | Manual Testing - Negative Testing |
-| **Testing Date** | December 2025 |
-
-**Description**
-
-When a user enters a password with less than 6 characters during registration, the system displays a technical error message that is not user-friendly and doesn't clearly indicate the password requirement.
-
-**Steps to Reproduce**
-
-1. Open the site https://buggy.justtestit.org/
-2. On the top right corner, click on the button "Register"
-3. Fill out all fields
-4. Set a password with less than 6 characters
-5. Click on the button "Register"
-6. Check the validation message
-
-**Expected Results**
-
-The validation message should display a meaningful message so the customer knows clearly what's wrong. For example: "Please enter a password with minimum 6 characters"
-
-**Actual Result**
-
-The message could cause confusion to the customer. It says "Invalid parameter" and includes technical terminology like "SignUpInput.password" that customers might not understand.
-
-**Impact Analysis**
-
-- **User Experience**: Technical jargon confuses non-technical users
-- **Business Impact**: May lead to support requests
-- **Usability**: Doesn't guide users on how to fix the issue
-
-**Recommended Fix**
-
-Replace technical error messages with user-friendly validation messages that clearly state the password requirements (e.g., "Password must be at least 6 characters long").
-
-**Evidence**
-
-[Screenshot: Registration form showing technical error message "Invalid parameter" with "SignUpInput.password" text]
-
-**Testing Notes**
-
-- Bug identified during boundary value analysis
-- Technical error message appears inconsistently
-- Tested with passwords of length 1-5 characters
-
----
-
-### BUG-003: Navigation Link Broken on Popular Make Page
-
-**Bug Summary**
-
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-003 |
 | **Title** | "Buggy rating" navigation link doesn't work on Make page |
 | **Severity** | Low |
 | **Priority** | Medium |
@@ -222,13 +160,13 @@ Fix the navigation link handler on the Make page to ensure consistent behavior a
 
 ---
 
-### BUG-004: Broken Image for Lancia Ypsilon
+### BUG-003: Broken Image for Lancia Ypsilon
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-004 |
+| **Bug ID** | BUG-003 |
 | **Title** | Lancia Ypsilon car image is broken on Overall page |
 | **Severity** | Low |
 | **Priority** | Low |
@@ -282,13 +220,13 @@ Image of the car 'Lancia Ypsilon' is broken (showing broken image icon).
 
 ---
 
-### BUG-005: Sorting by Rank Not Working Correctly
+### BUG-004: Sorting by Rank Not Working Correctly
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-005 |
+| **Bug ID** | BUG-004 |
 | **Title** | Sorting by Rank column is broken on Overall page |
 | **Severity** | Low |
 | **Priority** | Medium |
@@ -340,13 +278,13 @@ Debug the sorting function for the Rank column. Ensure the data type is handled 
 
 ---
 
-### BUG-006: Sorting by Votes Not Working Correctly
+### BUG-005: Sorting by Votes Not Working Correctly
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-006 |
+| **Bug ID** | BUG-005 |
 | **Title** | Sorting by Votes column is broken on Popular Make page |
 | **Severity** | Low |
 | **Priority** | Medium |
@@ -394,17 +332,17 @@ Debug the sorting function for the Votes column. Ensure numeric sorting is appli
 
 - Votes appear to be sorted as strings (e.g., "45" comes before "7")
 - Both ascending and descending sorts fail
-- Similar issue as Rank column sorting (BUG-005)
+- Similar issue as Rank column sorting (BUG-004)
 
 ---
 
-### BUG-007: Pagination Allows Navigation Beyond Valid Pages
+### BUG-006: Pagination Allows Navigation Beyond Valid Pages
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-007 |
+| **Bug ID** | BUG-006 |
 | **Title** | User can navigate to non-existing pages beyond the page limit |
 | **Severity** | Low |
 | **Priority** | Medium |
@@ -460,15 +398,15 @@ Implement pagination bounds checking:
 
 ---
 
-### BUG-008: Comments Not Responsive on Mobile Devices
+### BUG-007: Comments Not Responsive on Mobile Devices
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-008 |
+| **Bug ID** | BUG-007 |
 | **Title** | Page is not responsive on mobile due to long comments |
-| **Severity** | Medium |
+| **Severity** | High |
 | **Priority** | High |
 | **Category** | Responsive Design |
 | **Status** | New |
@@ -532,13 +470,13 @@ Consider implementing:
 
 ---
 
-### BUG-009: Missing Authors on Model Page Comments
+### BUG-008: Missing Authors on Model Page Comments
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-009 |
+| **Bug ID** | BUG-008 |
 | **Title** | No authors are displayed on Model page  |
 | **Severity** | Medium |
 | **Priority** | Medium |
@@ -593,15 +531,15 @@ All cars do not show the author of the comment posted.
 
 ---
 
-### BUG-010: Profile Allows Spaces in Required Fields
+### BUG-009: Profile Allows Spaces in Required Fields
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-010 |
+| **Bug ID** | BUG-009 |
 | **Title** | Profile page allows updating first name and last name with spaces |
-| **Severity** | Medium |
+| **Severity** | Low |
 | **Priority** | Medium |
 | **Category** | Validation |
 | **Status** | New |
@@ -666,15 +604,15 @@ function validateName(name) {
 
 ---
 
-### BUG-011: Uncontrolled Exception for Invalid Gender Values
+### BUG-010: Uncontrolled Exception for Invalid Gender Values
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-011 |
+| **Bug ID** | BUG-010 |
 | **Title** | Non-controlled exception when entering invalid gender values |
-| **Severity** | Medium |
+| **Severity** | Low |
 | **Priority** | Medium |
 | **Category** | Validation/Error Handling |
 | **Status** | New |
@@ -736,75 +674,13 @@ The site allows typing any value, and once you click save, an "unknown error" is
 
 ---
 
-### BUG-012: Unclear Error Message for Duplicate Username
+### BUG-011: Mobile Layout Issues on Model Page
 
 **Bug Summary**
 
 | Field | Value |
 |-------|-------|
-| **Bug ID** | BUG-012 |
-| **Title** | Wrong validation message when registering with existing username |
-| **Severity** | Medium |
-| **Priority** | Medium |
-| **Category** | Validation/UX |
-| **Status** | New |
-| **Functional Area** | Registration Page |
-| **Discovery Method** | Registration Flow Testing |
-| **Testing Date** | December 2025 |
-
-**Description**
-
-When a user attempts to register with a username that already exists in the system, the error message displayed is technical and unclear, making it difficult for users to understand the problem.
-
-**Steps to Reproduce**
-
-1. Open the site https://buggy.justtestit.org/
-2. Click on "Register"
-3. Fill out the form with the data of an existing user (username that's already registered)
-4. Click on "Register"
-
-**Expected Results**
-
-The site should validate the login has been created before and should show a clear and meaningful message to the user such as "Login already exists. Please choose a different username."
-
-**Actual Result**
-
-The site shows an error with a technical message that the user won't understand.
-
-**Impact Analysis**
-
-- **User Experience**: Technical errors confuse users
-- **Registration Success**: Users may abandon registration
-- **Support Burden**: May increase support requests
-- **Clarity**: Doesn't guide users on how to resolve the issue
-
-**Recommended Fix**
-
-Replace technical error messages with user-friendly validation messages:
-- "This username is already taken. Please choose a different username."
-- Consider implementing real-time username availability check
-- Provide suggestions for alternative usernames if possible
-
-**Evidence**
-
-<img width="1920" height="1609" alt="image" src="https://github.com/user-attachments/assets/35e2c8b4-78d7-474e-9cb2-7a07d3a4d665" />
-
-**Testing Notes**
-
-- Created test user "testuser123"
-- Attempted re-registration with same username
-- Error message contains technical jargon instead of user-friendly text
-- Similar issue as BUG-002 (technical error messages)
-
----
-
-### BUG-013: Mobile Layout Issues on Model Page
-
-**Bug Summary**
-
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-013 |
+| **Bug ID** | BUG-011 |
 | **Title** | Model page layout is not appropriate on mobile, comments section too large |
 | **Severity** | High |
 | **Priority** | High |
@@ -877,15 +753,15 @@ Consider:
 
 **Evidence**
 
-[Screenshot: iPhone 12 Pro showing disproportionate comment section taking 70% of screen]
-[Screenshot: Desktop vs Mobile comparison showing layout differences]
-[Video: Mobile screen recording showing navigation and scroll issues]
+<img width="293" height="634" alt="image" src="https://github.com/user-attachments/assets/1763103d-7637-4ab8-9bad-76c479a55d09" />
+<img width="293" height="634" alt="image" src="https://github.com/user-attachments/assets/f7b3b2e6-59d4-4a74-b764-0a5c158dbf26" />
+<img width="150" height="320" alt="image" src="https://github.com/user-attachments/assets/1fbb1b58-a79f-4643-86b4-ef158246b97f" />
 
 **Testing Notes**
 
 - Tested on iPhone 12 Pro (390x844), Samsung Galaxy S21 (360x800)
 - Comments section consumes majority of viewport
-- Related to BUG-008 (comment responsiveness)
+- Related to BUG-007 (comment responsiveness)
 - Desktop layout is well-balanced
 
 ---
@@ -901,15 +777,15 @@ Consider:
 | TC-003 | User Login - Valid Credentials | **Pass** | - |
 | TC-004 | User Login - Invalid Credentials | **Pass** | - |
 | TC-005 | Car Browsing via Overall Rating | **Pass** | - |
-| TC-006 | Pagination Functionality | **Pass** | BUG-007 (minor) |
+| TC-006 | Pagination Functionality | **Pass** | BUG-006 (minor) |
 | TC-007 | Car Model Details Page Navigation | **Pass** | - |
 | TC-008 | Vote for Car (Authenticated User) | **Pass** | - |
 | TC-009 | Vote for Car (Unauthenticated User) | **Pass** | - |
-| TC-010 | User Profile Update | **Pass** | BUG-010 (validation issue) |
+| TC-010 | User Profile Update | **Pass** | BUG-009 (validation issue) |
 | TC-011 | User Profile - Invalid Password | **Pass** | - |
-| TC-012 | Comment on Car Model | **Pass** | BUG-009 (display issue) |
+| TC-012 | Comment on Car Model | **Pass** | BUG-007 (display issue) |
 | TC-013 | Brand-specific Model Listing | **Pass** | - |
-| TC-014 | Responsive Design - Mobile View | **FAIL** | BUG-008, BUG-013 |
+| TC-014 | Responsive Design - Mobile View | **FAIL** | BUG-007, BUG-011 |
 | TC-015 | Cross-Browser Compatibility | **Pass** | - |
 | TC-016 | Performance - Page Load Time | **Pass** | - |
 
@@ -923,16 +799,16 @@ Consider:
 
 | Severity | Count | Percentage | Action Required |
 |----------|-------|------------|-----------------|
-| High | 1 | 7.7% | Fix in Current Sprint |
-| Medium | 5 | 38.5% | Fix in Next Sprint |
-| Low | 7 | 53.8% | Schedule for Future Release |
-| **Total** | **13** | **100%** | |
+| High | 2 | 18.2% | Fix in Current Sprint |
+| Medium | 1 | 9.09% | Fix in Next Sprint |
+| Low | 8 | 72.7% | Schedule for Future Release |
+| **Total** | **11** | **100%** | |
 
 ### Category Distribution
 
 | Category | Bug Count |
 |----------|-----------|
-| Validation | 5 |
+| Validation | 3 |
 | Responsive Design | 2 |
 | Navigation | 2 |
 | Functionality (Sorting) | 2 |
@@ -943,9 +819,10 @@ Consider:
 
 | Functional Area | Bug Count |
 |-----------------|-----------|
-| Registration Page | 3 |
-| Profile Page | 3 |
-| Overall Rating Page | 4 |
+| Registration Page | 1 |
+| Profile Page | 2 |
+| Overall Rating Page | 3 |
+| Popular Make Page | 2 |
 | Model Page | 3 |
 
 ---
@@ -954,25 +831,23 @@ Consider:
 
 ### 🔴 High Priority (Current Sprint - Within 1 week)
 
-1. **BUG-013**: Fix mobile layout issues on Model page - impacts user experience significantly
+1. **BUG-007**: Fix comment responsiveness on mobile devices
+2. **BUG-011**: Fix mobile layout issues on Model page - impacts user experience significantly
 
 ### 🟠 Medium Priority (Next Sprint - Within 2-3 weeks)
 
-1. **BUG-008**: Fix comment responsiveness on mobile devices
-2. **BUG-009**: Ensure all comments display author names
-3. **BUG-010**: Implement proper validation for profile fields
-4. **BUG-011**: Fix gender field validation and error handling
-5. **BUG-012**: Improve error messages for duplicate username
+1. **BUG-008**: Ensure all comments display author names
 
 ### 🟡 Low Priority (Future Release - Within 1-2 months)
 
 1. **BUG-001**: Fix last name validation message
-2. **BUG-002**: Improve password validation error messages
-3. **BUG-003**: Fix navigation link on Popular Make page
-4. **BUG-004**: Replace broken Lancia Ypsilon image
-5. **BUG-005**: Fix sorting by Rank column
-6. **BUG-006**: Fix sorting by Votes column
-7. **BUG-007**: Implement pagination bounds checking
+2. **BUG-002**: Fix navigation link on Popular Make page
+3. **BUG-003**: Replace broken Lancia Ypsilon image
+4. **BUG-004**: Fix sorting by Rank column
+5. **BUG-005**: Fix sorting by Votes column
+6. **BUG-006**: Implement pagination bounds checking
+7. **BUG-009**: Implement proper validation for profile fields
+8. **BUG-010**: Fix gender field validation and error handling
 
 ---
 
