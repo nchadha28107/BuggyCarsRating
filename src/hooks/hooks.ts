@@ -56,24 +56,41 @@ After(async function ({ pickle, result }) {
     
     await context.tracing.stop({ path: tracePath });
 
+    // Handle video recording
+    let videoPath: string | null = null;
     if (this.page.video()) {
-        const originalVideoPath = await this.page.video().path();
-        await this.page.close(); // Close page to finalize video
-        
-        // Wait for video to be saved
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Rename video with scenario name and status
-        if (fs.existsSync(originalVideoPath)) {
-            const videoDir = path.dirname(originalVideoPath);
-            const newVideoPath = path.join(videoDir, `${scenarioName}_${status}.webm`);
-            fs.renameSync(originalVideoPath, newVideoPath);
-            this.logger.info(`Video saved: ${newVideoPath}`);
-        }
-    } else {
-        await this.page.close();
+        videoPath = await this.page.video().path();
     }
-    await context.close();
+    
+    await this.page.close(); // Close page first
+    await context.close(); // Close context to finalize video
+    
+    // Wait longer for video file to be fully written and unlocked
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Now safely rename the video
+    if (videoPath && fs.existsSync(videoPath)) {
+        try {
+            const videoDir = path.dirname(videoPath);
+            const newVideoPath = path.join(videoDir, `${scenarioName}_${status}.webm`);
+            
+            // Use fs-extra's move method with overwrite option (more robust than rename)
+            await fs.move(videoPath, newVideoPath, { overwrite: true });
+            this.logger.info(`Video saved: ${newVideoPath}`);
+        } catch (error) {
+            this.logger.error(`Failed to rename video: ${error}`);
+            // Optionally retry once more
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            try {
+                const videoDir = path.dirname(videoPath);
+                const newVideoPath = path.join(videoDir, `${scenarioName}_${status}.webm`);
+                await fs.move(videoPath, newVideoPath, { overwrite: true });
+                this.logger.info(`Video saved on retry: ${newVideoPath}`);
+            } catch (retryError) {
+                this.logger.error(`Failed to rename video on retry: ${retryError}`);
+            }
+        }
+    }
 });
 
 AfterAll(async function () {
